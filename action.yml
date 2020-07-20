@@ -1,8 +1,39 @@
-name: 'Push'
+name: 'GitHub Commit & Push'
 description: 'Push changes made by actions right back into the current repository.'
+author: "actions-js"
+inputs:
+  github_token:
+    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+    required: true
+  user_email:
+    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+    default: 'action@github.com'
+    required: false  
+  user_name:
+    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+    default: 'Github Action'
+    required: false
+  repository:
+    description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})'
+    default: ''
+    required: false
+  branch:
+    description: 'Destination branch to push changes'
+    required: false
+    default: 'master'
+  force:
+    description: 'Determines if force push is used'
+    required: false
+  tags:
+    description: 'Determines if --tags is used'
+    required: false
+  directory:
+    description: 'Directory to change to before pushing.'
+    required: false
+    default: '.'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node12'
+  main: 'start.js'
 branding:
   icon: 'arrow-up-circle'
   color: 'green'
