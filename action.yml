@@ -1,0 +1,8 @@
+name: 'Push'
+description: 'Push changes made by actions right back into the current repository.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'arrow-up-circle'
+  color: 'green'
