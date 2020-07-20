@@ -32,7 +32,7 @@ git config http.sslVerify false
 git config --local user.email "${INPUT_USER_EMAIL}"
 git config --local user.name "${INPUT_USER_NAME}"
 
-timestamp=$(date -u)
+timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 git add -A
 git commit -m "chore: autopublish ${timestamp}" || exit 0
