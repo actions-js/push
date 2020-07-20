@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-INPUT_USER_EMAIL=${INPUT_USER_EMAIL:-'action@github.com'}
-INPUT_USER_NAME=${INPUT_USER_NAME:-'GitHub Action'}
+INPUT_USER_EMAIL=${INPUT_USER_EMAIL:-'github-actions[bot]@users.noreply.github.com'}
+INPUT_USER_NAME=${INPUT_USER_NAME:-'github-actions[bot]'}
 INPUT_BRANCH=${INPUT_BRANCH:-master}
 INPUT_FORCE=${INPUT_FORCE:-false}
 INPUT_TAGS=${INPUT_TAGS:-false}

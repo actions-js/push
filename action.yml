@@ -7,11 +7,11 @@ inputs:
     required: true
   user_email:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
-    default: 'action@github.com'
+    default: 'github-actions[bot]@users.noreply.github.com'
     required: false  
   user_name:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
-    default: 'Github Action'
+    default: 'github-actions[bot]'
     required: false
   repository:
     description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})'
