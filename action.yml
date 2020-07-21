@@ -5,13 +5,19 @@ inputs:
   github_token:
     description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
     required: true
-  user_email:
-    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+  author_email:
+    description: 'Email used to configure user.email in `git config`.'
     default: 'github-actions[bot]@users.noreply.github.com'
     required: false  
-  user_name:
-    description: 'Token for the repo. Can be passed in using $\{{ secrets.GITHUB_TOKEN }}'
+  author_name:
+    description: 'Name used to configure user.name in `git config`.'
     default: 'github-actions[bot]'
+    required: false  
+  coauthor_email:
+    description: 'Email used to make a co-authored commit.'
+    required: false  
+  coauthor_name:
+    description: 'Name used to make a co-authored commit.'
     required: false
   repository:
     description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})'

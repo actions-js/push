@@ -1,8 +1,10 @@
 #!/bin/sh
 set -e
 
-INPUT_USER_EMAIL=${INPUT_USER_EMAIL:-'github-actions[bot]@users.noreply.github.com'}
-INPUT_USER_NAME=${INPUT_USER_NAME:-'github-actions[bot]'}
+INPUT_AUTHOR_EMAIL=${INPUT_AUTHOR_EMAIL:-'github-actions[bot]@users.noreply.github.com'}
+INPUT_AUTHOR_NAME=${INPUT_AUTHOR_NAME:-'github-actions[bot]'}
+INPUT_COAUTHOR_EMAIL=${INPUT_COAUTHOR_EMAIL:-''}
+INPUT_COAUTHOR_NAME=${INPUT_COAUTHOR_NAME:-''}
 INPUT_BRANCH=${INPUT_BRANCH:-master}
 INPUT_FORCE=${INPUT_FORCE:-false}
 INPUT_TAGS=${INPUT_TAGS:-false}
@@ -24,17 +26,25 @@ if ${INPUT_TAGS}; then
     _TAGS='--tags'
 fi
 
-cd ${INPUT_DIRECTORY}
+cd "${INPUT_DIRECTORY}"
 
 remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
 
 git config http.sslVerify false
-git config --local user.email "${INPUT_USER_EMAIL}"
-git config --local user.name "${INPUT_USER_NAME}"
+git config --local user.email "${INPUT_AUTHOR_EMAIL}"
+git config --local user.name "${INPUT_AUTHOR_NAME}"
 
 timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 git add -A
-git commit -m "chore: autopublish ${timestamp}" || exit 0
 
-git push "${remote_repo}" HEAD:${INPUT_BRANCH} --follow-tags $_FORCE_OPTION $_TAGS;
+if [ -n "${INPUT_COAUTHOR_EMAIL}" ] && [ -n "${INPUT_COAUTHOR_NAME}" ]; then
+    git commit -m "chore: autopublish ${timestamp}
+    
+
+Co-authored-by: ${INPUT_COAUTHOR_NAME} <${INPUT_COAUTHOR_EMAIL}>" || exit 0
+else
+    git commit -m "chore: autopublish ${timestamp}" || exit 0
+fi
+
+git push "${remote_repo}" HEAD:"${INPUT_BRANCH}" --follow-tags $_FORCE_OPTION $_TAGS;
