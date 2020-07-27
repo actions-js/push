@@ -15,9 +15,12 @@ inputs:
     required: false  
   coauthor_email:
     description: 'Email used to make a co-authored commit.'
-    required: false  
+    required: false
   coauthor_name:
     description: 'Name used to make a co-authored commit.'
+    required: false
+  message:
+    description: 'Commit message.'
     required: false
   repository:
     description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})'
@@ -27,6 +30,9 @@ inputs:
     description: 'Destination branch to push changes'
     required: false
     default: 'master'
+  empty:
+    description: 'Allow empty commit'
+    required: false
   force:
     description: 'Determines if force push is used'
     required: false
