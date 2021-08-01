@@ -29,7 +29,7 @@ inputs:
   branch:
     description: 'Destination branch to push changes'
     required: false
-    default: 'master'
+    default: 'main'
   empty:
     description: 'Allow empty commit'
     required: false
