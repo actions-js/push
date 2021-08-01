@@ -49,7 +49,7 @@ if [ -n "${INPUT_COAUTHOR_EMAIL}" ] && [ -n "${INPUT_COAUTHOR_NAME}" ]; then
 
 Co-authored-by: ${INPUT_COAUTHOR_NAME} <${INPUT_COAUTHOR_EMAIL}>" $_EMPTY || exit 0
 else
-    git commit -m "{$INPUT_MESSAGE}" $_EMPTY || exit 0
+    git commit -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
 fi
 
 git push "${remote_repo}" HEAD:"${INPUT_BRANCH}" --follow-tags $_FORCE_OPTION $_TAGS;
