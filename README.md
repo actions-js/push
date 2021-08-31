@@ -42,7 +42,7 @@ jobs:
 | coauthor_email | string  |                             | Email used to make a co-authored commit. |
 | coauthor_name  | string  |                             | Name used to make a co-authored commit. |
 | message        | string  | 'chore: autopublish ${date}' | Commit message. |
-| branch         | string  | 'master'                    | Destination branch to push changes. |
+| branch         | string  | 'main'                    | Destination branch to push changes. |
 | empty          | boolean | false                       | Allow empty commit. |
 | force          | boolean | false                       | Determines if force push is used. |
 | tags           | boolean | false                       | Determines if `--tags` is used. |
