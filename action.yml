@@ -33,6 +33,10 @@ inputs:
   empty:
     description: 'Allow empty commit'
     required: false
+  amend:
+    description: 'Determines if the commit should be amended'
+    required: false
+    default: 'false'
   force:
     description: 'Determines if force push is used'
     required: false
