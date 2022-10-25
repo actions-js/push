@@ -52,4 +52,6 @@ else
     git commit -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
 fi
 
+git pull --rebase
+
 git push "${remote_repo}" HEAD:"${INPUT_BRANCH}" --follow-tags $_FORCE_OPTION $_TAGS;
