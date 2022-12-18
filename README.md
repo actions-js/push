@@ -44,6 +44,7 @@ jobs:
 | message        | string  | 'chore: autopublish ${date}' | Commit message. |
 | branch         | string  | 'main'                    | Destination branch to push changes. |
 | empty          | boolean | false                       | Allow empty commit. |
+| amend          | boolean | false                       | Determines if the commit should be amended. Needs to be used with `force` input to force push the amended commit. |
 | force          | boolean | false                       | Determines if force push is used. |
 | tags           | boolean | false                       | Determines if `--tags` is used. |
 | directory      | string  | '.'                         | Directory to change to before pushing. |
