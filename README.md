@@ -34,21 +34,21 @@ jobs:
 
 ### Inputs
 
-| name           | value   | default                     | description |
-| -------------- | ------  | --------------------------- | ----------- |
-| github_token   | string  |                             | Token for the repo. Can be passed in using `${{ secrets.GITHUB_TOKEN }}`. |
+| name           | value   | default                                        | description |
+| -------------- | ------  | ---------------------------------------------- | ----------- |
+| github_token   | string  |                                                | Token for the repo. Can be passed in using `${{ secrets.GITHUB_TOKEN }}`. |
 | author_email   | string  | 'github-actions[bot]@users.noreply.github.com' | Email used to configure user.email in `git config`. |
-| author_name    | string  | 'github-actions[bot]'       | Name used to configure user.name in `git config`. |
-| coauthor_email | string  |                             | Email used to make a co-authored commit. |
-| coauthor_name  | string  |                             | Name used to make a co-authored commit. |
-| message        | string  | 'chore: autopublish ${date}' | Commit message. |
-| branch         | string  | 'main'                    | Destination branch to push changes. |
-| empty          | boolean | false                       | Allow empty commit. |
-| amend          | boolean | false                       | Determines if the commit should be amended. Needs to be used with `force` input to force push the amended commit. |
-| force          | boolean | false                       | Determines if force push is used. |
-| tags           | boolean | false                       | Determines if `--tags` is used. |
-| directory      | string  | '.'                         | Directory to change to before pushing. |
-| repository     | string  | ''                          | Repository name. Default or empty repository name represents current github repository. If you want to push to other repository, you should make a [personal access token](https://github.com/settings/tokens) and use it as the `github_token` input.  |
+| author_name    | string  | 'github-actions[bot]'                          | Name used to configure user.name in `git config`. |
+| coauthor_email | string  |                                                | Email used to make a co-authored commit. |
+| coauthor_name  | string  |                                                | Name used to make a co-authored commit. |
+| message        | string  | 'chore: autopublish ${date}'                   | Commit message. |
+| branch         | string  | ${{ github.head_ref \|\| github.ref_name }}    | Destination branch to push changes. |
+| empty          | boolean | false                                          | Allow empty commit. |
+| amend          | boolean | false                                          | Determines if the commit should be amended. Needs to be used with `force` input to force push the amended commit. |
+| force          | boolean | false                                          | Determines if force push is used. |
+| tags           | boolean | false                                          | Determines if `--tags` is used. |
+| directory      | string  | '.'                                            | Directory to change to before pushing. |
+| repository     | string  | ''                                             | Repository name. Default or empty repository name represents current github repository. If you want to push to other repository, you should make a [personal access token](https://github.com/settings/tokens) and use it as the `github_token` input.  |
 
 ## License
 
