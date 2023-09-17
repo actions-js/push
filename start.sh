@@ -14,6 +14,7 @@ INPUT_FORCE=${INPUT_FORCE:-false}
 INPUT_TAGS=${INPUT_TAGS:-false}
 INPUT_EMPTY=${INPUT_EMPTY:-false}
 INPUT_DIRECTORY=${INPUT_DIRECTORY:-'.'}
+INPUT_NO_VERIFY=${INPUT_NO_VERIFY:-false}
 REPOSITORY=${INPUT_REPOSITORY:-$GITHUB_REPOSITORY}
 
 echo "Push to branch $INPUT_BRANCH";
@@ -38,6 +39,10 @@ if ${INPUT_TAGS}; then
     _TAGS='--tags'
 fi
 
+if ${INPUT_NO_VERIFY}; then
+    _NO_VERIFY='--no-verify'
+fi
+
 cd "${INPUT_DIRECTORY}"
 
 remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${REPOSITORY}.git"
@@ -50,20 +55,20 @@ git add -A
 
 if ${INPUT_AMEND}; then
     if [ -n "${INPUT_COAUTHOR_EMAIL}" ] && [ -n "${INPUT_COAUTHOR_NAME}" ]; then
-        git commit ${_AMEND} -m "${INPUT_MESSAGE}
+        git commit ${_AMEND} ${_NO_VERIFY} -m "${INPUT_MESSAGE}
 
     Co-authored-by: ${INPUT_COAUTHOR_NAME} <${INPUT_COAUTHOR_EMAIL}>" || exit 0
     else
-    git commit ${_AMEND} -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
+    git commit ${_AMEND} ${_NO_VERIFY} -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
     fi
 
 elif [ -n "${INPUT_COAUTHOR_EMAIL}" ] && [ -n "${INPUT_COAUTHOR_NAME}" ]; then
-    git commit -m "${INPUT_MESSAGE}
+    git commit ${_NO_VERIFY} -m "${INPUT_MESSAGE}
     
 
 Co-authored-by: ${INPUT_COAUTHOR_NAME} <${INPUT_COAUTHOR_EMAIL}>" $_EMPTY || exit 0
 else
-    git commit -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
+    git commit ${_NO_VERIFY} -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
 fi
 
 git push "${remote_repo}" HEAD:"${INPUT_BRANCH}" --follow-tags $_FORCE_OPTION $_TAGS;

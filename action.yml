@@ -47,6 +47,9 @@ inputs:
     description: 'Directory to change to before pushing.'
     required: false
     default: '.'
+  no_verify:
+    description: 'Ignore git hooks'
+    required: false
 runs:
   using: 'node16'
   main: 'start.js'
