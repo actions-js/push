@@ -47,6 +47,7 @@ jobs:
 | amend          | boolean | false                       | Determines if the commit should be amended. Needs to be used with `force` input to force push the amended commit. |
 | force          | boolean | false                       | Determines if force push is used. |
 | tags           | boolean | false                       | Determines if `--tags` is used. |
+| rebase         | boolean | false                       | Determines if `git pull --rebase` is used before the push. This is useful if multiple actions try to push at the same time. |
 | directory      | string  | '.'                         | Directory to change to before pushing. |
 | repository     | string  | ''                          | Repository name. Default or empty repository name represents current github repository. If you want to push to other repository, you should make a [personal access token](https://github.com/settings/tokens) and use it as the `github_token` input.  |
 

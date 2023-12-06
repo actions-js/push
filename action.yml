@@ -23,25 +23,28 @@ inputs:
     description: 'Commit message.'
     required: false
   repository:
-    description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY})'
+    description: 'Repository name to push. Default or empty value represents current github repository (${GITHUB_REPOSITORY}).'
     default: ''
     required: false
   branch:
-    description: 'Destination branch to push changes'
+    description: 'Destination branch to push changes.'
     required: false
     default: 'main'
   empty:
-    description: 'Allow empty commit'
+    description: 'Allow empty commit.'
     required: false
   amend:
-    description: 'Determines if the commit should be amended'
+    description: 'Determines if the commit should be amended.'
     required: false
     default: 'false'
   force:
-    description: 'Determines if force push is used'
+    description: 'Determines if force push is used.'
     required: false
   tags:
-    description: 'Determines if --tags is used'
+    description: 'Determines if --tags is used.'
+    required: false
+  rebase:
+    description: 'Determines if `git pull --rebase` is used before the push. This is useful if multiple actions try to push at the same time.'
     required: false
   directory:
     description: 'Directory to change to before pushing.'

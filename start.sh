@@ -12,6 +12,7 @@ INPUT_BRANCH=${INPUT_BRANCH:-master}
 INPUT_AMEND=${INPUT_AMEND:-false}
 INPUT_FORCE=${INPUT_FORCE:-false}
 INPUT_TAGS=${INPUT_TAGS:-false}
+INPUT_REBASE=${INPUT_REBASE:-false}
 INPUT_EMPTY=${INPUT_EMPTY:-false}
 INPUT_DIRECTORY=${INPUT_DIRECTORY:-'.'}
 REPOSITORY=${INPUT_REPOSITORY:-$GITHUB_REPOSITORY}
@@ -64,6 +65,10 @@ elif [ -n "${INPUT_COAUTHOR_EMAIL}" ] && [ -n "${INPUT_COAUTHOR_NAME}" ]; then
 Co-authored-by: ${INPUT_COAUTHOR_NAME} <${INPUT_COAUTHOR_EMAIL}>" $_EMPTY || exit 0
 else
     git commit -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
+fi
+
+if ${INPUT_REBASE}; then
+    git pull --rebase
 fi
 
 git push "${remote_repo}" HEAD:"${INPUT_BRANCH}" --follow-tags $_FORCE_OPTION $_TAGS;
