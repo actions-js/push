@@ -12,7 +12,7 @@ INPUT_BRANCH=${INPUT_BRANCH:-master}
 INPUT_AMEND=${INPUT_AMEND:-false}
 INPUT_FORCE=${INPUT_FORCE:-false}
 INPUT_TAGS=${INPUT_TAGS:-false}
-INPUT_PULL=${INPUT_PULL:-false}
+INPUT_REBASE=${INPUT_REBASE:-false}
 INPUT_EMPTY=${INPUT_EMPTY:-false}
 INPUT_DIRECTORY=${INPUT_DIRECTORY:-'.'}
 REPOSITORY=${INPUT_REPOSITORY:-$GITHUB_REPOSITORY}
@@ -67,7 +67,7 @@ else
     git commit -m "${INPUT_MESSAGE}" $_EMPTY || exit 0
 fi
 
-if ${INPUT_PULL}; then
+if ${INPUT_REBASE}; then
     git pull --rebase
 fi
 

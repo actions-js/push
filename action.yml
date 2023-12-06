@@ -43,7 +43,7 @@ inputs:
   tags:
     description: 'Determines if --tags is used.'
     required: false
-  pull:
+  rebase:
     description: 'Determines if `git pull --rebase` is used before the push. This is useful if multiple actions try to push at the same time.'
     required: false
   directory:
