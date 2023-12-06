@@ -35,7 +35,7 @@ jobs:
 ### Inputs
 
 | name           | value   | default                     | description |
-|----------------| ------  | --------------------------- | ----------- |
+| -------------- | ------  | --------------------------- | ----------- |
 | github_token   | string  |                             | Token for the repo. Can be passed in using `${{ secrets.GITHUB_TOKEN }}`. |
 | author_email   | string  | 'github-actions[bot]@users.noreply.github.com' | Email used to configure user.email in `git config`. |
 | author_name    | string  | 'github-actions[bot]'       | Name used to configure user.name in `git config`. |
