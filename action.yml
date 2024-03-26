@@ -48,7 +48,7 @@ inputs:
     required: false
     default: '.'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'start.js'
 branding:
   icon: 'arrow-up-circle'
