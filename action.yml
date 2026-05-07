@@ -8,11 +8,11 @@ inputs:
   author_email:
     description: 'Email used to configure user.email in `git config`.'
     default: 'github-actions[bot]@users.noreply.github.com'
-    required: false  
+    required: false
   author_name:
     description: 'Name used to configure user.name in `git config`.'
     default: 'github-actions[bot]'
-    required: false  
+    required: false
   coauthor_email:
     description: 'Email used to make a co-authored commit.'
     required: false
@@ -51,7 +51,7 @@ inputs:
     required: false
     default: '.'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'start.js'
 branding:
   icon: 'arrow-up-circle'
