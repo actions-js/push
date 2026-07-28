@@ -49,6 +49,7 @@ jobs:
 | tags           | boolean | false                       | Determines if `--tags` is used. |
 | rebase         | boolean | false                       | Determines if `git pull --rebase` is used before the push. This is useful if multiple actions try to push at the same time. |
 | directory      | string  | '.'                         | Directory to change to before pushing. |
+| no_verify      | boolean | false                       | Ignore git hooks on commit |
 | repository     | string  | ''                          | Repository name. Default or empty repository name represents current github repository. If you want to push to other repository, you should make a [personal access token](https://github.com/settings/tokens) and use it as the `github_token` input.  |
 
 ## License
